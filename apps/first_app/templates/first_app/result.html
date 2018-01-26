@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> 
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'first_app/css/style.css' %}" media="screen" title="no title" charset="utf-8">
+    <title>Survey Form Result</title>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="bb">
+            <div id="header">
+                Thanks for submitting! You have submit this form {{ request.session.counter }} times now.
+            </div>
+        </div>
+        <ul class="list-group">
+            <li class="list-group-item active">Submitted Information</li>
+            {% for info in request.session.data.items %}
+            <li class="list-group-item">{{ info.0 }}: {{info.1}}</li>
+            {% endfor %}
+        </ul>
+
+        <button><a href="/">Go back</a></button>
+
+
+    </div>
+    
+</body>
+</html>
